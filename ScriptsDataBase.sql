@@ -59,3 +59,6 @@ CREATE TABLE Usuario(
     correo VARCHAR(25),
     rol INTEGER
 );
+-- INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('Julio Mayen', 'mayenrosil', '123', 'mayenrosil@gmail.com', 1);
+INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', 1);
+SELECT * FROM Usuario;
