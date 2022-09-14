@@ -51,10 +51,11 @@ CREATE TABLE Factura_CxP(
     FOREIGN KEY (idProveedor) REFERENCES Proveedor(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
-CREATE TABLE Usuarios(
+CREATE TABLE Usuario(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(40),
     usuario VARCHAR(25),
     clave VARCHAR(25),
-    correo VARCHAR(25)
+    correo VARCHAR(25),
+    rol INTEGER
 );
