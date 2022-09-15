@@ -22,6 +22,7 @@ public class Usuario {
     private String clave;
     private String correo;
     private int Rol;
+    private String nombreRol;
 
     public int getId() {
         return id;
@@ -70,5 +71,13 @@ public class Usuario {
     public void setRol(int Rol) {
         this.Rol = Rol;
     }
-        
+
+    public String getNombreRol() {
+        return nombreRol;
+    }
+
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol = nombreRol;
+    }
+
 }

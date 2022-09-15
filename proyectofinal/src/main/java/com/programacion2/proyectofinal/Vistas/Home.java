@@ -1,16 +1,36 @@
 
 package com.programacion2.proyectofinal.Vistas;
 
+import com.programacion2.proyectofinal.Usuarios.Usuario;
+
 /**
  *
  * @author mayen
  */
 public class Home extends javax.swing.JFrame {
+    
+    Usuario modelo;
 
 
     public Home() {
         this.setVisible(true);
         initComponents();
+    }
+    
+    public Home(Usuario modelo){
+        this.setVisible(true);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.modelo = modelo;
+        
+        lblNombre.setText(modelo.getNombre());
+        lblRol.setText(modelo.getNombreRol());
+        
+        if(modelo.getRol() == 1){
+            btnAdmin.setVisible(true);
+        }else if(modelo.getRol() == 2){
+            btnAdmin.setVisible(false);
+        }
     }
 
     /**
@@ -22,28 +42,53 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        btnAdmin = new javax.swing.JButton();
+        btnUser = new javax.swing.JButton();
+        lblRol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Este es el Home");
+        lblNombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        btnAdmin.setText("admin");
+
+        btnUser.setText("user");
+
+        lblRol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblRol.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnUser)
+                            .addComponent(btnAdmin)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblNombre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(btnAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(btnUser)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,6 +128,9 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnUser;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblRol;
     // End of variables declaration//GEN-END:variables
 }

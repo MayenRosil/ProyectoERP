@@ -69,7 +69,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addComponent(btnLogin)
                 .addGap(293, 293, 293))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(jLabel3))
@@ -79,9 +79,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtClave)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario)
+                            .addComponent(txtClave))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,7 +119,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login correcto");
                 Inicio.frmLogin = null;
                 this.dispose();
-                Home frmHome = new Home();
+                Home frmHome = new Home(modelo);
             }else{
                 JOptionPane.showMessageDialog(null, "Datos incorrectos");
             }
