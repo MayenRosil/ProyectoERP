@@ -10,6 +10,7 @@ public class Inicio extends javax.swing.JFrame {
 
     public static IniciarSesion frmLogin;
     public static RegistroUsuario frmRegistro;
+    public static boolean abrioHome = false;
     
   
     public Inicio() {
@@ -17,6 +18,10 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    
+    public static void bloquearBotones(){
+        abrioHome = true;
     }
 
     /**
@@ -83,18 +88,28 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
-        if(frmLogin == null){
-            frmLogin = new IniciarSesion();
-            frmLogin.setVisible(true);
+        if(!abrioHome){
+            if(frmRegistro != null){
+                frmRegistro.dispose();
+                frmRegistro = null;
+            }
+            if(frmLogin == null){
+                frmLogin = new IniciarSesion();
+                frmLogin.setVisible(true);
+            }
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
-        // TODO add your handling code here:
-        if(frmRegistro == null){
-            frmRegistro = new RegistroUsuario();
-            frmRegistro.setVisible(true);
+        if(!abrioHome){
+            if(frmLogin != null){
+                frmLogin.dispose();
+                frmLogin = null;
+            }
+            if(frmRegistro == null){
+                frmRegistro = new RegistroUsuario();
+                frmRegistro.setVisible(true);
+            }
         }
     }//GEN-LAST:event_btnCrearCuentaActionPerformed
 

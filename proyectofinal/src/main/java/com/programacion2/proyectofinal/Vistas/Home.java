@@ -22,10 +22,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        Inicio.frmLogin = new IniciarSesion();
-        Inicio.frmLogin.setVisible(false);
-        Inicio.frmRegistro = new RegistroUsuario();
-        Inicio.frmRegistro.setVisible(false);
+        Inicio.bloquearBotones();
         
         this.modelo = modelo;
         lblNombre.setText(modelo.getNombre());

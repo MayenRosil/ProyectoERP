@@ -155,7 +155,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 }
                 
             }else{
-                    JOptionPane.showMessageDialog(null, "Usuario ya existente");
+                JOptionPane.showMessageDialog(null, "Usuario ya existente");
             }
      
         }else{
