@@ -11,6 +11,7 @@ public class Home extends javax.swing.JFrame {
     
     Usuario modelo;
 
+    public static GestionUsuarios frmGestionUsuarios;
 
     public Home() {
         this.setVisible(true);
@@ -21,6 +22,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         
         Inicio.bloquearBotones();
@@ -30,9 +32,9 @@ public class Home extends javax.swing.JFrame {
         lblRol.setText(modelo.getNombreRol());
         
         if(modelo.getRol() == 1){
-            btnAdmin.setVisible(true);
+            btnGestionUsuarios.setVisible(true);
         }else if(modelo.getRol() == 2){
-            btnAdmin.setVisible(false);
+            btnGestionUsuarios.setVisible(false);
         }
     }
 
@@ -46,7 +48,7 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         lblNombre = new javax.swing.JLabel();
-        btnAdmin = new javax.swing.JButton();
+        btnGestionUsuarios = new javax.swing.JButton();
         btnUser = new javax.swing.JButton();
         lblRol = new javax.swing.JLabel();
 
@@ -55,7 +57,12 @@ public class Home extends javax.swing.JFrame {
         lblNombre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNombre.setBorder(new javax.swing.border.MatteBorder(null));
 
-        btnAdmin.setText("admin");
+        btnGestionUsuarios.setText("Gestion Usuarios");
+        btnGestionUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionUsuariosActionPerformed(evt);
+            }
+        });
 
         btnUser.setText("user");
 
@@ -69,7 +76,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                    .addComponent(btnGestionUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                     .addComponent(btnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -83,7 +90,7 @@ public class Home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGestionUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(170, Short.MAX_VALUE))
@@ -91,6 +98,13 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionUsuariosActionPerformed
+        if(frmGestionUsuarios == null){
+             frmGestionUsuarios = new GestionUsuarios();
+             frmGestionUsuarios.setVisible(true);
+         }
+    }//GEN-LAST:event_btnGestionUsuariosActionPerformed
 
   
     public static void main(String args[]) {
@@ -126,7 +140,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnGestionUsuarios;
     private javax.swing.JButton btnUser;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblRol;

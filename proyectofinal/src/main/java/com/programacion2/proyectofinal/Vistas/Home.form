@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnAdmin" pref="129" max="32767" attributes="0"/>
+                  <Component id="btnGestionUsuarios" pref="129" max="32767" attributes="0"/>
                   <Component id="btnUser" max="32767" attributes="0"/>
                   <Component id="lblNombre" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                   <Component id="lblRol" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
@@ -43,7 +43,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblRol" min="-2" pref="21" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-              <Component id="btnAdmin" min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="btnGestionUsuarios" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnUser" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace pref="170" max="32767" attributes="0"/>
@@ -64,10 +64,13 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAdmin">
+    <Component class="javax.swing.JButton" name="btnGestionUsuarios">
       <Properties>
-        <Property name="text" type="java.lang.String" value="admin"/>
+        <Property name="text" type="java.lang.String" value="Gestion Usuarios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionUsuariosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUser">
       <Properties>
