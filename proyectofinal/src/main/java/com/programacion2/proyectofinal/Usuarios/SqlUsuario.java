@@ -53,7 +53,7 @@ public class SqlUsuario {
                     usuario.setNombre(rs.getString(2));
                     usuario.setCorreo(rs.getString(5));
                     usuario.setRol(rs.getInt(6));
-                    usuario.setNombreRol(rs.getInt(6) == 1 ? "Admin" : "User");
+                    usuario.setNombreRol(rs.getInt(6) == 1 ? "Administrador" : "Usuario");
                     return true;
                 }else{
                     return false;
