@@ -14,6 +14,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
  
     public RegistroUsuario() {
         initComponents();
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }

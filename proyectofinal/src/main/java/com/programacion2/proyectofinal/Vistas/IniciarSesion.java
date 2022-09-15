@@ -13,6 +13,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     public IniciarSesion() {
         initComponents();
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }

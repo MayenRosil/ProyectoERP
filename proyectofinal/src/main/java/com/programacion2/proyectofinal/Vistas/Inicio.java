@@ -15,9 +15,10 @@ public class Inicio extends javax.swing.JFrame {
   
     public Inicio() {
         initComponents();
-        this.setVisible(true);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
     
     public static void bloquearBotones(){
