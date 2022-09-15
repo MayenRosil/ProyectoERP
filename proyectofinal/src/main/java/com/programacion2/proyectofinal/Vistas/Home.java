@@ -21,8 +21,13 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.modelo = modelo;
         
+        Inicio.frmLogin = new IniciarSesion();
+        Inicio.frmLogin.setVisible(false);
+        Inicio.frmRegistro = new RegistroUsuario();
+        Inicio.frmRegistro.setVisible(false);
+        
+        this.modelo = modelo;
         lblNombre.setText(modelo.getNombre());
         lblRol.setText(modelo.getNombreRol());
         
