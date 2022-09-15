@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.programacion2.proyectofinal.Vistas;
 
 import com.programacion2.proyectofinal.Usuarios.SqlUsuario;
@@ -15,9 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class RegistroUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroUsuario
-     */
+ 
     public RegistroUsuario() {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -138,11 +132,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
         SqlUsuario modeloSQL = new SqlUsuario();
         Usuario modelo = new Usuario();
         
-        if(!txtNombre.getText().equals("") && !txtUsuario.getText().equals("") && !txtClave.getText().equals("") && !txtCorreo.getText().equals("")){
+        if(!txtNombre.getText().equals("") && !txtUsuario.getText().equals("") && 
+                !txtClave.getText().equals("") && !txtCorreo.getText().equals("")){
             modelo.setNombre(txtNombre.getText());
             modelo.setUsuario(txtUsuario.getText());
             modelo.setClave(txtClave.getText());
@@ -158,6 +152,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "Error al guardar");
                 }
+                
             }else{
                     JOptionPane.showMessageDialog(null, "Usuario ya existente");
             }
@@ -168,13 +163,10 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
         Inicio.frmRegistro = null;
     }//GEN-LAST:event_formWindowClosing
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

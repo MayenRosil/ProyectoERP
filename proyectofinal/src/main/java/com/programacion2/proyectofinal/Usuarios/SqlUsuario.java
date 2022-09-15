@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.programacion2.proyectofinal.Usuarios;
 
 import com.programacion2.proyectofinal.Conexiones.Conexion;
@@ -40,8 +36,7 @@ public class SqlUsuario {
         }
     }
        
-    public boolean iniciarSesion(Usuario usuario){
-                          
+    public boolean iniciarSesion(Usuario usuario){               
         Conexion conexion = new Conexion();
         String consulta = "SELECT id, nombre, usuario, clave, correo, rol FROM Usuario WHERE usuario = ?";
         PreparedStatement ps = null;
@@ -88,8 +83,7 @@ public class SqlUsuario {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al buscar el Usuario\nerror: "+e.toString());
             return false;
-        }
-        
+        } 
     }
     
 }

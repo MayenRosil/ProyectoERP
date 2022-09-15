@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package com.programacion2.proyectofinal.Vistas;
 
 /**
@@ -14,9 +11,7 @@ public class Inicio extends javax.swing.JFrame {
     public static IniciarSesion frmLogin;
     public static RegistroUsuario frmRegistro;
     
-    /**
-     * Creates new form MenuPrincipal
-     */
+  
     public Inicio() {
         initComponents();
         this.setVisible(true);
