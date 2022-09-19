@@ -82,7 +82,7 @@ public class SqlUsuario {
             ps.execute();
             return true;
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al buscar el Usuario\nerror: "+e.toString());
+            JOptionPane.showMessageDialog(null, "Error al crear el Usuario\nerror: "+e.toString());
             return false;
         } 
     }
