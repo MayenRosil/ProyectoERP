@@ -1,5 +1,4 @@
-CREATE DATABASE ProyectoERP;
-USE ProyectoERP;
+USE proyectoerpjava;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(25),
