@@ -4,10 +4,8 @@ Proyecto final referente al curso de Programación 2, impartido en la Universida
 Consta de un Sistema ERP desarrollado en Java con la biblioteca gráfica Swing, y utilizando MySQL para la creación y manejo de la Base de Datos.
 
 ## Base de Datos
-Está Hosteada en AWS mediante el servicio de PlanetScale, en la URL: `https://app.planetscale.com/mayenrosil/proyecto-erp-java`
+Está Hosteada gracias al servicio de Google Cloud Platform, con la IP Publica: `34.135.159.66`
 ### Las credenciales para conectarse son:
-- Nombre de la DB: `ProyectoERPJava`
-- User: `9zc1d7q88eeqp0220e4i`
-- Password: `pscale_pw_oLFRCqaoIoqzoEa474uV1zybauiIcepB5NPcqmXcffK`
-- JavaURL: `jdbc:mysql://us-east.connect.psdb.cloud/proyecto-erp-java?sslMode=VERIFY_IDENTITY",
-  "9zc1d7q88eeqp0220e4i`
+- Nombre de la DB: `proyectoerpjava`
+- User: `root`
+- Password: `123456`
