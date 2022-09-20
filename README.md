@@ -7,3 +7,4 @@ Para visualizar los parámetros para conectar a la DB:
 - Instalar Heroku
 - Hacer Logincon heroku
 - Ejecutar el comando: `heroku config --app erp-java-proyectofinal-db`
+- CLEARDB_DATABASE_URL: `mysql://b7eba9029c1048:c3ee26d4@us-cdbr-east-06.cleardb.net/heroku_66fd855269aa33b?reconnect=true`
