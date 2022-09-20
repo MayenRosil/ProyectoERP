@@ -3,8 +3,11 @@ Proyecto final referente al curso de Programación 2, impartido en la Universida
 
 Consta de un Sistema ERP desarrollado en Java con la biblioteca gráfica Swing, y utilizando MySQL para la creación y manejo de la Base de Datos.
 
-Para visualizar los parámetros para conectar a la DB:
-- Instalar Heroku
-- Hacer Logincon heroku
-- Ejecutar el comando: `heroku config --app erp-java-proyectofinal-db`
-- CLEARDB_DATABASE_URL: `mysql://b7eba9029c1048:c3ee26d4@us-cdbr-east-06.cleardb.net/heroku_66fd855269aa33b?reconnect=true`
+## Base de Datos
+Está Hosteada en AWS mediante el servicio de PlanetScale, en la URL: `https://app.planetscale.com/mayenrosil/proyecto-erp-java`
+### Las credenciales para conectarse son:
+- Nombre de la DB: `ProyectoERPJava`
+- User: `9zc1d7q88eeqp0220e4i`
+- Password: `pscale_pw_oLFRCqaoIoqzoEa474uV1zybauiIcepB5NPcqmXcffK`
+- JavaURL: `jdbc:mysql://us-east.connect.psdb.cloud/proyecto-erp-java?sslMode=VERIFY_IDENTITY",
+  "9zc1d7q88eeqp0220e4i`
