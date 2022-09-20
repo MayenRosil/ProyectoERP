@@ -14,8 +14,8 @@ public class Home extends javax.swing.JFrame {
     public static GestionUsuarios frmGestionUsuarios;
 
     public Home() {
-        this.setVisible(true);
         initComponents();
+        this.setVisible(true);
     }
     
     public Home(Usuario modelo){
@@ -101,7 +101,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnGestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionUsuariosActionPerformed
         if(frmGestionUsuarios == null){
-             frmGestionUsuarios = new GestionUsuarios();
+             frmGestionUsuarios = new GestionUsuarios(this.modelo);
              frmGestionUsuarios.setVisible(true);
          }
     }//GEN-LAST:event_btnGestionUsuariosActionPerformed

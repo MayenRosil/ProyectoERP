@@ -3,6 +3,7 @@ package com.programacion2.proyectofinal.Vistas;
 
 import com.programacion2.proyectofinal.GestionUsuarios.GestionUsuario;
 import com.programacion2.proyectofinal.GestionUsuarios.SqlGestionUsuario;
+import com.programacion2.proyectofinal.Usuarios.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,11 +12,16 @@ import javax.swing.JOptionPane;
  */
 public class GestionUsuarios extends javax.swing.JFrame {
 
-    public GestionUsuarios() {
+    Usuario modelo;
+    
+    public GestionUsuarios(Usuario modelo) {
+        this.modelo = modelo;
+        
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
         
         btnAgregar.setEnabled(true);
         btnEliminar.setEnabled(false);
