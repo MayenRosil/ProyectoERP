@@ -81,7 +81,7 @@ public class SqlProducto {
         }
     }
     
-    public void seleccionarRegistro(JTable tblProductos, JTextField txtId, JTextField txtNombre, 
+    public boolean seleccionarRegistro(JTable tblProductos, JTextField txtId, JTextField txtNombre, 
             JTextField txtMarca, JTextField txtStock, JTextField txtPrecioCompra, JTextField txtPrecioVenta){
         try{
             
@@ -93,12 +93,15 @@ public class SqlProducto {
                 txtStock.setText((tblProductos.getValueAt(fila, 3).toString()));
                 txtPrecioCompra.setText((tblProductos.getValueAt(fila, 4).toString()));
                 txtPrecioVenta.setText((tblProductos.getValueAt(fila, 5).toString()));
+                return true;
             }else{
                 JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+                return false;
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al seleccionar Fila, error: "+e.toString());
+            return false;
         }
     }
     

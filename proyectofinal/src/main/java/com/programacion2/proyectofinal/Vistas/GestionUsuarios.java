@@ -209,11 +209,17 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
     private void tblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMouseClicked
         SqlGestionUsuario modeloSQL = new SqlGestionUsuario();
-        modeloSQL.seleccionarRegistro(tblUsuarios, txtId, txtNombre, txtUsuario, txtClave, txtCorreo);
+        if(modeloSQL.seleccionarRegistro(tblUsuarios, txtId, txtNombre, txtUsuario, txtClave, txtCorreo)){           
+            btnAgregar.setEnabled(false);
+            btnEliminar.setEnabled(true);
+            btnActualizar.setEnabled(true);
+        }else{
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+        }
         
-        btnAgregar.setEnabled(false);
-        btnEliminar.setEnabled(true);
-        btnActualizar.setEnabled(true);
     }//GEN-LAST:event_tblUsuariosMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked

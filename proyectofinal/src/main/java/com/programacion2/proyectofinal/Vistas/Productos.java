@@ -231,11 +231,17 @@ public class Productos extends javax.swing.JFrame {
 
     private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
         SqlProducto modeloSQL = new SqlProducto();
-        modeloSQL.seleccionarRegistro(tblProductos, txtId, txtNombre, txtMarca, txtStock, txtPrecioCompra, txtPrecioVenta);
+        if(modeloSQL.seleccionarRegistro(tblProductos, txtId, txtNombre, txtMarca, txtStock, txtPrecioCompra, txtPrecioVenta)){
+            btnAgregar.setEnabled(false);
+            btnEliminar.setEnabled(true);
+            btnActualizar.setEnabled(true);
+        }else{
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+        }
         
-        btnAgregar.setEnabled(false);
-        btnEliminar.setEnabled(true);
-        btnActualizar.setEnabled(true);
     }//GEN-LAST:event_tblProductosMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

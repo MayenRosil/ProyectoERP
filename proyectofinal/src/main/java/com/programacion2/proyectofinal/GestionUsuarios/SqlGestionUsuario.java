@@ -88,7 +88,7 @@ public class SqlGestionUsuario {
         
     }
     
-    public void seleccionarRegistro(JTable tblUsuarios, JTextField txtId, JTextField txtNombre, 
+    public boolean seleccionarRegistro(JTable tblUsuarios, JTextField txtId, JTextField txtNombre, 
             JTextField txtUsuario, JTextField txtClave, JTextField txtCorreo){
         try{
             
@@ -99,12 +99,15 @@ public class SqlGestionUsuario {
                 txtUsuario.setText((tblUsuarios.getValueAt(fila, 2).toString()));
                 txtClave.setText((tblUsuarios.getValueAt(fila, 3).toString()));
                 txtCorreo.setText((tblUsuarios.getValueAt(fila, 4).toString()));
+                return true;
             }else{
                 JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+                return false;
             }
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al seleccionar Fila, error: "+e.toString());
+                return false;
         }
     }
     
