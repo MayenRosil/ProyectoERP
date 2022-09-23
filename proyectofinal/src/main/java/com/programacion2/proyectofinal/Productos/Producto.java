@@ -11,7 +11,7 @@ public class Producto {
     private String nombre;
     private String marca;
     private int stock;
-    private double precioCosto;
+    private double precioCompra;
     private double precioVenta;
     private String fechaUltimoIngreso;
     private String fechaUltimaSalida;
@@ -48,12 +48,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    public double getPrecioCosto() {
-        return precioCosto;
+    public double getPrecioCompra() {
+        return precioCompra;
     }
 
-    public void setPrecioCosto(double precioCosto) {
-        this.precioCosto = precioCosto;
+    public void setPrecioCompra(double precioCompra) {
+        this.precioCompra = precioCompra;
     }
 
     public double getPrecioVenta() {

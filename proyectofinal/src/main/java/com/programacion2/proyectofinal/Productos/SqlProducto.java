@@ -102,4 +102,30 @@ public class SqlProducto {
         }
     }
     
+    public boolean crearProducto(Producto producto){
+        Conexion conexion = new Conexion();
+        String consulta = "INSERT INTO Producto(nombre, marca, stock, precioCompra, precioVenta, fechaUltimoIngreso, fechaUltimaSalida) VALUES(?, ?, ?, ?, ?, ?, ?);";
+        PreparedStatement ps = null;
+        
+        try{
+            ps = conexion.estableceConexion().prepareStatement(consulta);
+            ps.setString(1, producto.getNombre());
+            ps.setString(2, producto.getMarca());
+            ps.setString(3, Integer.toString(producto.getStock()));
+            ps.setString(4, Double.toString(producto.getPrecioCompra()));
+            ps.setString(5, Double.toString(producto.getPrecioVenta()));
+            ps.setString(6, null);
+            ps.setString(7, null);
+            ps.execute();
+            return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al crear el Producto\nerror: "+e.toString());
+            return false;
+        }
+    }
+    
+    public boolean actualizarPruducto(Producto producto){
+        return true;
+    }
+    
 }

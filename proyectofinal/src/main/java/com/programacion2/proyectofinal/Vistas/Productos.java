@@ -1,8 +1,10 @@
 
 package com.programacion2.proyectofinal.Vistas;
 
+import com.programacion2.proyectofinal.Productos.Producto;
 import com.programacion2.proyectofinal.Productos.SqlProducto;
 import com.programacion2.proyectofinal.Usuarios.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -94,8 +96,18 @@ public class Productos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblProductos);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -220,6 +232,37 @@ public class Productos extends javax.swing.JFrame {
         btnEliminar.setEnabled(true);
         btnActualizar.setEnabled(true);
     }//GEN-LAST:event_tblProductosMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        SqlProducto modeloSQL = new SqlProducto();
+        Producto modelo = new Producto();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        SqlProducto modeloSQL = new SqlProducto();
+        Producto modelo = new Producto();
+        JOptionPane.showMessageDialog(null, txtPrecioCompra.getText());
+        modelo.setNombre(txtNombre.getText());
+        modelo.setMarca(txtMarca.getText());
+        modelo.setStock(Integer.parseInt(txtStock.getText()));
+        modelo.setPrecioCompra(Double.parseDouble(txtPrecioCompra.getText()));
+        modelo.setPrecioVenta(Double.parseDouble(txtPrecioVenta.getText()));
+        modelo.setFechaUltimoIngreso(null);
+        modelo.setFechaUltimaSalida(null);
+        
+        if(!txtNombre.getText().equals("") && !txtMarca.getText().equals("") && !txtStock.getText().equals("")
+                && !txtPrecioCompra.getText().equals("") && !txtPrecioVenta.getText().equals("")){
+            if(modeloSQL.crearProducto(modelo)){
+                JOptionPane.showMessageDialog(null, "Producto guardado");
+                limpiarInputs();
+                modeloSQL.listarProductos(tblProductos);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al guardar");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void limpiarInputs(){
         txtId.setText("");
