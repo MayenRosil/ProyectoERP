@@ -1,5 +1,4 @@
-CREATE DATABASE ProyectoERP;
-USE ProyectoERP;
+USE proyectoerpjava;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(25),
@@ -51,10 +50,18 @@ CREATE TABLE Factura_CxP(
     FOREIGN KEY (idProveedor) REFERENCES Proveedor(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
-CREATE TABLE Usuarios(
+CREATE TABLE Usuario(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(40),
     usuario VARCHAR(25),
     clave VARCHAR(25),
-    correo VARCHAR(25)
+    correo VARCHAR(25),
+    rol INTEGER
 );
+-- INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('Julio Mayen', 'mayenrosil', '123', 'mayenrosil@gmail.com', 1);
+-- INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', 1);
+-- INSERT INTO Producto(nombre, marca, stock, precioCompra, precioVenta, fechaUltimoIngreso, fechaUltimaSalida) VALUES('Laptop', 'Dell', 2, 99.99, 149.99, NOW(), NOW());
+-- SELECT * FROM Usuario;
+-- SELECT * FROM Producto;
+ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
+-- DELETE FROM Producto WHERE id = 6;
