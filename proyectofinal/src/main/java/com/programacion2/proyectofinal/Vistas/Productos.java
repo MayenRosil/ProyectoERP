@@ -110,6 +110,11 @@ public class Productos extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nombre:");
 
@@ -236,12 +241,30 @@ public class Productos extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         SqlProducto modeloSQL = new SqlProducto();
         Producto modelo = new Producto();
+        
+        modelo.setId(Integer.parseInt(txtId.getText()));
+        modelo.setNombre(txtNombre.getText());
+        modelo.setMarca(txtMarca.getText());
+        modelo.setStock(Integer.parseInt(txtStock.getText()));
+        modelo.setPrecioCompra(Double.parseDouble(txtPrecioCompra.getText()));
+        modelo.setPrecioVenta(Double.parseDouble(txtPrecioVenta.getText()));
+        
+        if(modeloSQL.actualizarPruducto(modelo)){
+            JOptionPane.showMessageDialog(null, "Producto actualizado");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarProductos(tblProductos);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al actualizar");
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         SqlProducto modeloSQL = new SqlProducto();
         Producto modelo = new Producto();
-        JOptionPane.showMessageDialog(null, txtPrecioCompra.getText());
+        
         modelo.setNombre(txtNombre.getText());
         modelo.setMarca(txtMarca.getText());
         modelo.setStock(Integer.parseInt(txtStock.getText()));
@@ -263,6 +286,24 @@ public class Productos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        SqlProducto modeloSQL = new SqlProducto();
+        Producto modelo = new Producto();
+        
+        modelo.setId(Integer.parseInt(txtId.getText()));
+        
+        if(modeloSQL.eliminarProducto(modelo)){
+            JOptionPane.showMessageDialog(null, "Producto eliminado");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarProductos(tblProductos);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void limpiarInputs(){
         txtId.setText("");

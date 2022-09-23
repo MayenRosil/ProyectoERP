@@ -125,7 +125,40 @@ public class SqlProducto {
     }
     
     public boolean actualizarPruducto(Producto producto){
-        return true;
+        Conexion conexion = new Conexion();
+        String consulta = "UPDATE Producto SET nombre = ?, marca = ?, stock = ?, precioCompra = ?, precioVenta = ? WHERE id = ?;";
+        PreparedStatement ps = null;
+        
+        try{
+            ps = conexion.estableceConexion().prepareStatement(consulta);
+            ps.setString(1, producto.getNombre());
+            ps.setString(2, producto.getMarca());
+            ps.setString(3, Integer.toString(producto.getStock()));
+            ps.setString(4, Double.toString(producto.getPrecioCompra()));
+            ps.setString(5, Double.toString(producto.getPrecioVenta()));
+            ps.setInt(6, producto.getId());
+            ps.execute();
+            return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar el Usuario\nerror: "+e.toString());
+            return false;
+        }
+    }
+    
+    public boolean eliminarProducto(Producto producto){
+        Conexion conexion = new Conexion();
+        String consulta = "DELETE FROM Producto WHERE id = ?";
+        PreparedStatement ps = null;
+        
+        try{
+            ps = conexion.estableceConexion().prepareStatement(consulta);
+            ps.setInt(1, producto.getId());
+            ps.execute();
+            return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Usuario\nerror: "+e.toString());
+            return false;
+        }
     }
     
 }
