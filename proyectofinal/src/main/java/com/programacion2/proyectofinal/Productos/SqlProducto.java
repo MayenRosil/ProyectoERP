@@ -143,7 +143,7 @@ public class SqlProducto {
             ps.execute();
             return true;
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al actualizar el Usuario\nerror: "+e.toString());
+            JOptionPane.showMessageDialog(null, "Error al actualizar el Producto\nerror: "+e.toString());
             return false;
         }
     }
@@ -159,7 +159,7 @@ public class SqlProducto {
             ps.execute();
             return true;
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al eliminar el Usuario\nerror: "+e.toString());
+            JOptionPane.showMessageDialog(null, "Error al eliminar el Producto\nerror: "+e.toString());
             return false;
         }
     }

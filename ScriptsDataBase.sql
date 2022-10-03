@@ -1,3 +1,4 @@
+-- CREATE DATABASE proyectoerpjava;
 USE proyectoerpjava;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -61,7 +62,13 @@ CREATE TABLE Usuario(
 -- INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('Julio Mayen', 'mayenrosil', '123', 'mayenrosil@gmail.com', 1);
  INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', 1);
 -- INSERT INTO Producto(nombre, marca, stock, precioCompra, precioVenta, fechaUltimoIngreso, fechaUltimaSalida) VALUES('Laptop', 'Dell', 2, 99.99, 149.99, NOW(), NOW());
+-- INSERT INTO Proveedor(razonSocial, direccion, nombreContacto, telefonoContacto, emailContacto) VALUES('Intelaf', 'Metronorte zona 18', 'Juan Perez', '12345678', 'juan.perez@gmail.com');
 -- SELECT * FROM Usuario;
+-- SELECT * FROM Proveedor;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
 ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 -- DELETE FROM Producto WHERE id = 6;
+ALTER TABLE Cliente MODIFY COLUMN correo VARCHAR(50);
+ALTER TABLE Proveedor MODIFY COLUMN emailContacto VARCHAR(50);
+ALTER TABLE Usuario MODIFY COLUMN correo VARCHAR(50);
+-- DESC Usuario;
