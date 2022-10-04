@@ -226,7 +226,7 @@ public class Proveedores extends javax.swing.JFrame {
 
     private void tblProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProveedoresMouseClicked
         SqlProveedor modeloSQL = new SqlProveedor();
-        if(modeloSQL.selecionarRegistro(tblProveedores, txtId, txtRazonSocial, txtDireccion, txtNombreContacto, txtTelefonoContacto, txtEmailContacto)){
+        if(modeloSQL.seleccionarRegistro(tblProveedores, txtId, txtRazonSocial, txtDireccion, txtNombreContacto, txtTelefonoContacto, txtEmailContacto)){
             btnAgregar.setEnabled(false);
             btnEliminar.setEnabled(true);
             btnActualizar.setEnabled(true);

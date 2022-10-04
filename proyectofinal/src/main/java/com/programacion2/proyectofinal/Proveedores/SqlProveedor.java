@@ -55,9 +55,9 @@ public class SqlProveedor {
         }
     }
     
-    public boolean selecionarRegistro(JTable tblProveedores, JTextField txtId, JTextField txtRazonSocial,
+    public boolean seleccionarRegistro(JTable tblProveedores, JTextField txtId, JTextField txtRazonSocial,
             JTextField txtDireccion, JTextField txtNombreContacto, JTextField txtTelefonoContacto, JTextField txtEmailContacto){
-                try{
+        try{
             
             int fila = tblProveedores.getSelectedRow();
             if(fila >= 0){
