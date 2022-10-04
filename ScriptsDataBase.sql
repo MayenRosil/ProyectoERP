@@ -63,8 +63,11 @@ CREATE TABLE Usuario(
  INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', 1);
 -- INSERT INTO Producto(nombre, marca, stock, precioCompra, precioVenta, fechaUltimoIngreso, fechaUltimaSalida) VALUES('Laptop', 'Dell', 2, 99.99, 149.99, NOW(), NOW());
 -- INSERT INTO Proveedor(razonSocial, direccion, nombreContacto, telefonoContacto, emailContacto) VALUES('Intelaf', 'Metronorte zona 18', 'Juan Perez', '12345678', 'juan.perez@gmail.com');
+-- INSERT INTO Cliente(nombre, apellido, nit, direccion, correo, telefono) VALUES('Juan', 'Perez', '10730648-4', 'Metronorte zona 18', 'juan.perez@gmail.com', '12345678');
 -- SELECT * FROM Usuario;
+-- SELECT * FROM Producto WHERE nombre = 'Mouse' LIMIT 1;
 -- SELECT * FROM Proveedor;
+-- SELECT * FROM Cliente;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
 ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 -- DELETE FROM Producto WHERE id = 6;
