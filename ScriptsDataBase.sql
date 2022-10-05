@@ -74,4 +74,5 @@ ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 ALTER TABLE Cliente MODIFY COLUMN correo VARCHAR(50);
 ALTER TABLE Proveedor MODIFY COLUMN emailContacto VARCHAR(50);
 ALTER TABLE Usuario MODIFY COLUMN correo VARCHAR(50);
--- DESC Usuario;
+ALTER TABLE Factura_CxC DROP COLUMN numero;
+-- DESC Factura_CxC;
