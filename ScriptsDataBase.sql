@@ -53,6 +53,8 @@ CREATE TABLE Factura_CxP(
     FOREIGN KEY (idProveedor) REFERENCES Proveedor(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
+-- INSERT INTO Factura_CxP(idProveedor, idProducto, fecha, total, precioUnitario, cantidadArticulos) VALUES(2, 1, NOW(), 13.05, 2.5, 3);
+-- SELECT * FROM Factura_CxP;
 CREATE TABLE Usuario(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(40),
