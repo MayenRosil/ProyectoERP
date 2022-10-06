@@ -1,3 +1,4 @@
+-- CREATE DATABASE proyectoerpjava;
 USE proyectoerpjava;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -30,6 +31,8 @@ CREATE TABLE Factura_CxC(
     FOREIGN KEY (idCliente) REFERENCES Cliente(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
+-- INSERT INTO Factura_CxC(idCliente, idProducto, fecha, total, precioUnitario, cantidadArticulos) VALUES(2, 1, NOW(), 13.05, 2.5, 3);
+-- SELECT * FROM Factura_CxC;
 CREATE TABLE Proveedor(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     razonSocial VARCHAR(40),
@@ -61,7 +64,18 @@ CREATE TABLE Usuario(
 -- INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('Julio Mayen', 'mayenrosil', '123', 'mayenrosil@gmail.com', 1);
  INSERT INTO Usuario(nombre, usuario, clave, correo, rol) VALUES('admin', 'admin', 'admin', 'admin@gmail.com', 1);
 -- INSERT INTO Producto(nombre, marca, stock, precioCompra, precioVenta, fechaUltimoIngreso, fechaUltimaSalida) VALUES('Laptop', 'Dell', 2, 99.99, 149.99, NOW(), NOW());
+-- INSERT INTO Proveedor(razonSocial, direccion, nombreContacto, telefonoContacto, emailContacto) VALUES('Intelaf', 'Metronorte zona 18', 'Juan Perez', '12345678', 'juan.perez@gmail.com');
+-- INSERT INTO Cliente(nombre, apellido, nit, direccion, correo, telefono) VALUES('Juan', 'Perez', '10730648-4', 'Metronorte zona 18', 'juan.perez@gmail.com', '12345678');
 -- SELECT * FROM Usuario;
+-- SELECT * FROM Producto WHERE nombre = 'Mouse' LIMIT 1;
+-- SELECT * FROM Proveedor;
+-- SELECT * FROM Cliente;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
 ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 -- DELETE FROM Producto WHERE id = 6;
+ALTER TABLE Cliente MODIFY COLUMN correo VARCHAR(50);
+ALTER TABLE Proveedor MODIFY COLUMN emailContacto VARCHAR(50);
+ALTER TABLE Usuario MODIFY COLUMN correo VARCHAR(50);
+ALTER TABLE Factura_CxC DROP COLUMN numero;
+ALTER TABLE Factura_CxP DROP COLUMN numero;
+-- DESC Factura_CxC;

@@ -13,6 +13,10 @@ public class Home extends javax.swing.JFrame {
 
     public static GestionUsuarios frmGestionUsuarios;
     public static Productos frmProductos;
+    public static Clientes frmClientes;
+    public static Proveedores frmProveedores;
+    public static CuentasPagar frmCuentasPagar;
+    public static CuentasCobrar frmCuentasCobrar;
 
     public Home() {
         initComponents();
@@ -35,8 +39,9 @@ public class Home extends javax.swing.JFrame {
         if(modelo.getRol() == 1){
             btnGestionUsuarios.setVisible(true);
         }else if(modelo.getRol() == 2){
-            btnGestionUsuarios.setVisible(false);
+            btnGestionUsuarios.setVisible(true);
         }
+        btnUser.setVisible(false);
     }
 
     /**
@@ -53,6 +58,10 @@ public class Home extends javax.swing.JFrame {
         btnUser = new javax.swing.JButton();
         lblRol = new javax.swing.JLabel();
         btnProductos = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        btnProveedores = new javax.swing.JButton();
+        btnCuentasCobrar = new javax.swing.JButton();
+        btnCuentasPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,20 +87,57 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        btnClientes.setText("Clientes");
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+
+        btnProveedores.setText("Proveedores");
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
+
+        btnCuentasCobrar.setText("Factura - Cuentas por Cobrar");
+        btnCuentasCobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentasCobrarActionPerformed(evt);
+            }
+        });
+
+        btnCuentasPagar.setText("Factura - Cuentas por Pagar");
+        btnCuentasPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuentasPagarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnGestionUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                    .addComponent(btnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCuentasCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCuentasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGestionUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRol, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +151,16 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btnGestionUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCuentasCobrar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCuentasPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(btnUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +179,34 @@ public class Home extends javax.swing.JFrame {
             frmProductos.setVisible(true);
         }
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        if(frmClientes == null){
+            frmClientes = new Clientes(this.modelo);
+            frmClientes.setVisible(true);
+        }
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        if(frmProveedores == null){
+            frmProveedores = new Proveedores(this.modelo);
+            frmProveedores.setVisible(true);
+        }
+    }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnCuentasCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentasCobrarActionPerformed
+        if(frmCuentasCobrar == null){
+            frmCuentasCobrar = new CuentasCobrar(this.modelo);
+            frmCuentasCobrar.setVisible(true);
+        }
+    }//GEN-LAST:event_btnCuentasCobrarActionPerformed
+
+    private void btnCuentasPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentasPagarActionPerformed
+        if(frmCuentasPagar == null){
+            frmCuentasPagar = new CuentasPagar(this.modelo);
+            frmCuentasPagar.setVisible(true);
+        }
+    }//GEN-LAST:event_btnCuentasPagarActionPerformed
 
   
     public static void main(String args[]) {
@@ -160,8 +242,12 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnCuentasCobrar;
+    private javax.swing.JButton btnCuentasPagar;
     private javax.swing.JButton btnGestionUsuarios;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnUser;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblRol;
