@@ -37,10 +37,11 @@ public class Home extends javax.swing.JFrame {
         lblRol.setText(modelo.getNombreRol());
         
         if(modelo.getRol() == 1){
-            btnGestionUsuarios.setVisible(false);
+            btnGestionUsuarios.setVisible(true);
         }else if(modelo.getRol() == 2){
-            btnGestionUsuarios.setVisible(false);
+            btnGestionUsuarios.setVisible(true);
         }
+        btnUser.setVisible(false);
     }
 
     /**
