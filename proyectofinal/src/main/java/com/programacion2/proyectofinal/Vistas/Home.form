@@ -26,28 +26,27 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnCuentasCobrar" min="-2" pref="175" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnCuentasPagar" min="-2" pref="175" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnGestionUsuarios" pref="129" max="32767" attributes="0"/>
-                          <Component id="btnUser" max="32767" attributes="0"/>
                           <Component id="lblNombre" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                           <Component id="lblRol" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                          <Component id="btnProveedores" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnProductos" pref="116" max="32767" attributes="0"/>
-                          <Component id="btnProveedores" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="btnClientes" min="-2" pref="124" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnCuentasCobrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnCuentasPagar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnClientes" min="-2" pref="124" max="-2" attributes="0"/>
+                          <Component id="btnProductos" min="-2" pref="124" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <Component id="btnUser" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace pref="173" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,19 +61,20 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnGestionUsuarios" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   <Component id="btnProductos" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                  <Component id="btnClientes" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnProveedores" max="32767" attributes="0"/>
-                  <Component id="btnUser" pref="39" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnProveedores" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnClientes" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCuentasCobrar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="btnCuentasPagar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="113" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnUser" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

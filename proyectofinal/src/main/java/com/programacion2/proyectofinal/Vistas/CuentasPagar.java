@@ -5,7 +5,10 @@
  */
 package com.programacion2.proyectofinal.Vistas;
 
+import com.programacion2.proyectofinal.CuentasPagar.CuentaPagar;
+import com.programacion2.proyectofinal.CuentasPagar.SqlCuentasPagar;
 import com.programacion2.proyectofinal.Usuarios.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +25,13 @@ public class CuentasPagar extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        btnAgregar.setEnabled(true);
+        btnEliminar.setEnabled(false);
+        btnActualizar.setEnabled(false);
+        
+        SqlCuentasPagar sqlCuentasPagar = new SqlCuentasPagar();
+        sqlCuentasPagar.listarFacturas(tblFacturas);
     }
 
     private CuentasPagar() {
@@ -37,10 +47,90 @@ public class CuentasPagar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblFacturas = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        txtProveedor = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtProducto = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtPrecioUnitario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Cuentas por Pagar");
+
+        jLabel2.setText("Id:");
+
+        txtId.setEditable(false);
+
+        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFacturasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblFacturas);
+
+        jLabel3.setText("Proveedor:");
+
+        jLabel4.setText("Producto:");
+
+        jLabel5.setText("Total:");
+
+        jLabel6.setText("Precio Unitario:");
+
+        jLabel7.setText("Cantidad Articulo:");
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -48,11 +138,78 @@ public class CuentasPagar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(371, 371, 371))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -62,6 +219,102 @@ public class CuentasPagar extends javax.swing.JFrame {
         Home.frmCuentasPagar = null;
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        SqlCuentasPagar modeloSQL = new SqlCuentasPagar();
+        CuentaPagar modelo = new CuentaPagar();
+
+        modelo.setId(Integer.parseInt(txtId.getText()));
+        modelo.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
+        modelo.setIdProducto(Integer.parseInt(txtProducto.getText()));
+        modelo.setTotal(Double.parseDouble(txtTotal.getText()));
+        modelo.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
+        modelo.setCantidadArticulos(Integer.parseInt(txtCantidad.getText()));
+
+        if(modeloSQL.actualizarFactura(modelo)){
+            JOptionPane.showMessageDialog(null, "Factura actualizada");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarFacturas(tblFacturas);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al actualizar");
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        SqlCuentasPagar modeloSQL = new SqlCuentasPagar();
+        CuentaPagar modelo = new CuentaPagar();
+
+        modelo.setId(Integer.parseInt(txtId.getText()));
+
+        if(modeloSQL.eliminarFactura(modelo)){
+            JOptionPane.showMessageDialog(null, "Factura eliminada");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarFacturas(tblFacturas);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        SqlCuentasPagar modeloSQL = new SqlCuentasPagar();
+        CuentaPagar modelo = new CuentaPagar();
+
+        modelo.setIdProveedor(Integer.parseInt(txtProveedor.getText()));
+        modelo.setIdProducto(Integer.parseInt(txtProducto.getText()));
+        modelo.setFecha(null);
+        modelo.setTotal(Double.parseDouble(txtTotal.getText()));
+        modelo.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
+        modelo.setCantidadArticulos(Integer.parseInt(txtCantidad.getText()));
+
+        if(!txtProveedor.getText().equals("") && !txtProducto.getText().equals("") && !txtCantidad.getText().equals("")
+            && !txtTotal.getText().equals("") && !txtPrecioUnitario.getText().equals("")){
+            if(modeloSQL.crearFactura(modelo)){
+                JOptionPane.showMessageDialog(null, "Factura guardada");
+                limpiarInputs();
+                modeloSQL.listarFacturas(tblFacturas);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al guardar");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        limpiarInputs();
+        btnAgregar.setEnabled(true);
+        btnEliminar.setEnabled(false);
+        btnActualizar.setEnabled(false);
+    }//GEN-LAST:event_formMouseClicked
+
+    private void tblFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFacturasMouseClicked
+        SqlCuentasPagar modeloSQL = new SqlCuentasPagar();
+        if(modeloSQL.seleccionarRegistro(tblFacturas, txtId, txtProveedor, txtProducto, txtTotal, txtPrecioUnitario, txtCantidad)){
+            btnAgregar.setEnabled(false);
+            btnEliminar.setEnabled(true);
+            btnActualizar.setEnabled(true);
+        }else{
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+        }
+    }//GEN-LAST:event_tblFacturasMouseClicked
+
+    private void limpiarInputs(){
+        txtId.setText("");
+        txtProveedor.setText("");
+        txtProducto.setText("");
+        txtTotal.setText("");
+        txtPrecioUnitario.setText("");
+        txtCantidad.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -98,5 +351,23 @@ public class CuentasPagar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblFacturas;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtPrecioUnitario;
+    private javax.swing.JTextField txtProducto;
+    private javax.swing.JTextField txtProveedor;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
