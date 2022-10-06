@@ -6,7 +6,9 @@
 package com.programacion2.proyectofinal.Vistas;
 
 import com.programacion2.proyectofinal.CuentasCobrar.SqlCuentasCobrar;
+import com.programacion2.proyectofinal.CuentasCobrar.CuentaCobrar;
 import com.programacion2.proyectofinal.Usuarios.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,7 +31,7 @@ public class CuentasCobrar extends javax.swing.JFrame {
         btnActualizar.setEnabled(false);
         
         SqlCuentasCobrar sqlCuentasCobrar = new SqlCuentasCobrar();
-        sqlCuentasCobrar.listarFacturas(tblClientes);
+        sqlCuentasCobrar.listarFacturas(tblFacturas);
     }
 
     private CuentasCobrar() {
@@ -47,15 +49,13 @@ public class CuentasCobrar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
+        tblFacturas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtProducto = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -67,6 +67,11 @@ public class CuentasCobrar extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -76,7 +81,7 @@ public class CuentasCobrar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Cuentas por Cobrar");
 
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -87,7 +92,12 @@ public class CuentasCobrar extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblClientes);
+        tblFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFacturasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblFacturas);
 
         jLabel2.setText("Id:");
 
@@ -97,8 +107,6 @@ public class CuentasCobrar extends javax.swing.JFrame {
 
         jLabel4.setText("Producto:");
 
-        jLabel6.setText("Fecha:");
-
         jLabel7.setText("Total:");
 
         jLabel8.setText("Precio Unitario:");
@@ -106,10 +114,25 @@ public class CuentasCobrar extends javax.swing.JFrame {
         jLabel9.setText("Cantidad Articulo:");
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,8 +146,6 @@ public class CuentasCobrar extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtPrecioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,10 +192,6 @@ public class CuentasCobrar extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(txtProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addGap(2, 2, 2)
                         .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,9 +214,105 @@ public class CuentasCobrar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiarInputs(){
+        txtId.setText("");
+        txtCliente.setText("");
+        txtProducto.setText("");
+        txtTotal.setText("");
+        txtPrecioUnitario.setText("");
+        txtCantidad.setText("");
+    }
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         Home.frmCuentasCobrar = null;
     }//GEN-LAST:event_formWindowClosing
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        limpiarInputs();
+        btnAgregar.setEnabled(true);
+        btnEliminar.setEnabled(false);
+        btnActualizar.setEnabled(false);
+    }//GEN-LAST:event_formMouseClicked
+
+    private void tblFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFacturasMouseClicked
+        SqlCuentasCobrar modeloSQL = new SqlCuentasCobrar();
+        if(modeloSQL.seleccionarRegistro(tblFacturas, txtId, txtCliente, txtProducto, txtTotal, txtPrecioUnitario, txtCantidad)){
+            btnAgregar.setEnabled(false);
+            btnEliminar.setEnabled(true);
+            btnActualizar.setEnabled(true);
+        }else{
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+        }
+    }//GEN-LAST:event_tblFacturasMouseClicked
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        SqlCuentasCobrar modeloSQL = new SqlCuentasCobrar();
+        CuentaCobrar modelo = new CuentaCobrar();
+        
+        modelo.setIdCliente(Integer.parseInt(txtCliente.getText()));
+        modelo.setIdProducto(Integer.parseInt(txtProducto.getText()));
+        modelo.setFecha(null);
+        modelo.setTotal(Double.parseDouble(txtTotal.getText()));
+        modelo.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
+        modelo.setCantidadArticulos(Integer.parseInt(txtCantidad.getText()));
+        
+        if(!txtCliente.getText().equals("") && !txtProducto.getText().equals("") && !txtCantidad.getText().equals("")
+                && !txtTotal.getText().equals("") && !txtPrecioUnitario.getText().equals("")){
+            if(modeloSQL.crearFactura(modelo)){
+                JOptionPane.showMessageDialog(null, "Factura guardada");
+                limpiarInputs();
+                modeloSQL.listarFacturas(tblFacturas);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al guardar");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        SqlCuentasCobrar modeloSQL = new SqlCuentasCobrar();
+        CuentaCobrar modelo = new CuentaCobrar();
+        
+        modelo.setId(Integer.parseInt(txtId.getText()));
+        modelo.setIdCliente(Integer.parseInt(txtCliente.getText()));
+        modelo.setIdProducto(Integer.parseInt(txtProducto.getText()));
+        modelo.setTotal(Double.parseDouble(txtTotal.getText()));
+        modelo.setPrecioUnitario(Double.parseDouble(txtPrecioUnitario.getText()));
+        modelo.setCantidadArticulos(Integer.parseInt(txtCantidad.getText()));
+        
+        if(modeloSQL.actualizarFactura(modelo)){
+            JOptionPane.showMessageDialog(null, "Factura actualizada");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarFacturas(tblFacturas);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al actualizar");
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        SqlCuentasCobrar modeloSQL = new SqlCuentasCobrar();
+        CuentaCobrar modelo = new CuentaCobrar();
+        
+        modelo.setId(Integer.parseInt(txtId.getText()));
+        
+        if(modeloSQL.eliminarFactura(modelo)){
+            JOptionPane.showMessageDialog(null, "Factura eliminada");
+            limpiarInputs();
+            btnAgregar.setEnabled(true);
+            btnEliminar.setEnabled(false);
+            btnActualizar.setEnabled(false);
+            modeloSQL.listarFacturas(tblFacturas);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +340,7 @@ public class CuentasCobrar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CuentasCobrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -244,15 +358,13 @@ public class CuentasCobrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblFacturas;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtPrecioUnitario;
     private javax.swing.JTextField txtProducto;

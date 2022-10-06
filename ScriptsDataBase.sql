@@ -31,6 +31,8 @@ CREATE TABLE Factura_CxC(
     FOREIGN KEY (idCliente) REFERENCES Cliente(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
+-- INSERT INTO Factura_CxC(idCliente, idProducto, fecha, total, precioUnitario, cantidadArticulos) VALUES(2, 1, NOW(), 13.05, 2.5, 3);
+-- SELECT * FROM Factura_CxC;
 CREATE TABLE Proveedor(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     razonSocial VARCHAR(40),

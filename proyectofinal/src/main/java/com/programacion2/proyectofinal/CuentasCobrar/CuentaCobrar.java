@@ -6,12 +6,13 @@ package com.programacion2.proyectofinal.CuentasCobrar;
  *
  * @author mayen
  */
-public class CuentasCobrar {
+public class CuentaCobrar {
     private int id;
     private int idCliente;
     private int idProducto;
     private String fecha;
     private double total;
+    private double precioUnitario;
     private int cantidadArticulos;
 
     public int getId() {
@@ -60,6 +61,14 @@ public class CuentasCobrar {
 
     public void setCantidadArticulos(int cantidadArticulos) {
         this.cantidadArticulos = cantidadArticulos;
+    }
+
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
     
 }
