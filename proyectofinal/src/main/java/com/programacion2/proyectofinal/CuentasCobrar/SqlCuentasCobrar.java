@@ -6,6 +6,8 @@ import com.programacion2.proyectofinal.Conexiones.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -80,19 +82,25 @@ public class SqlCuentasCobrar {
     }
     
     public boolean crearFactura(CuentaCobrar cuentaCobrar){
-                Conexion conexion = new Conexion();
+        Conexion conexion = new Conexion();
         String consulta = "INSERT INTO Factura_CxC(idCliente, idProducto, fecha, total, precioUnitario, cantidadArticulos) VALUES(?, ?, ?, ?, ?, ?);";
         PreparedStatement ps = null;
         
         try{
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat dateOnly = new SimpleDateFormat("yyyy-MM-dd");
+            
             ps = conexion.estableceConexion().prepareStatement(consulta);
             ps.setString(1, Integer.toString(cuentaCobrar.getIdCliente()));
             ps.setString(2, Integer.toString(cuentaCobrar.getIdProducto()));
-            ps.setString(3, null);
+            ps.setString(3, dateOnly.format(cal.getTime()));
             ps.setString(4, Double.toString(cuentaCobrar.getTotal()));
             ps.setString(5, Double.toString(cuentaCobrar.getPrecioUnitario()));
             ps.setString(6, Integer.toString(cuentaCobrar.getCantidadArticulos()));
             ps.execute();
+            
+            Statement st = conexion.estableceConexion().createStatement();
+            ResultSet rs = st.executeQuery("CALL actualizarStockProducto_Venta("+Integer.toString(cuentaCobrar.getIdProducto())+", "+Integer.toString(cuentaCobrar.getCantidadArticulos())+");");
             return true;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al crear la Factura\nerror: "+e.toString());

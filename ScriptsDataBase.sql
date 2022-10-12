@@ -70,6 +70,7 @@ CREATE TABLE Usuario(
 -- INSERT INTO Cliente(nombre, apellido, nit, direccion, correo, telefono) VALUES('Juan', 'Perez', '10730648-4', 'Metronorte zona 18', 'juan.perez@gmail.com', '12345678');
 -- SELECT * FROM Usuario;
 -- SELECT * FROM Producto WHERE nombre = 'Mouse' LIMIT 1;
+-- SELECT * FROM Producto;
 -- SELECT * FROM Proveedor;
 -- SELECT * FROM Cliente;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
@@ -81,3 +82,26 @@ ALTER TABLE Usuario MODIFY COLUMN correo VARCHAR(50);
 ALTER TABLE Factura_CxC DROP COLUMN numero;
 ALTER TABLE Factura_CxP DROP COLUMN numero;
 -- DESC Factura_CxC;
+DELIMITER //
+CREATE PROCEDURE actualizarStockProducto_Venta(
+	IN idProductoPorActualizar INTEGER,
+    IN aumentoStock INTEGER
+)
+BEGIN
+	SELECT @stockActual := stock FROM Producto WHERE id = idProductoPorActualizar;
+	UPDATE Producto SET stock = @stockActual - aumentoStock, fechaUltimaSalida = NOW() WHERE id = idProductoPorActualizar;
+END //
+DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE actualizarStockProducto_Compra(
+	IN idProductoPorActualizar INTEGER,
+    IN aumentoStock INTEGER
+)
+BEGIN
+	SELECT @stockActual := stock FROM Producto WHERE id = idProductoPorActualizar;
+	UPDATE Producto SET stock = @stockActual + aumentoStock, fechaUltimoIngreso = NOW() WHERE id = idProductoPorActualizar;
+END //
+DELIMITER ;
+-- CALL actualizarStockProducto_Venta(1, 2);
+-- DROP PROCEDURE actualizarStockProducto_Venta;
+-- DROP PROCEDURE actualizarStockProducto_Compra;
