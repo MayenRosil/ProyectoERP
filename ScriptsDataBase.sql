@@ -1,5 +1,5 @@
 -- CREATE DATABASE proyectoerpjava;
-USE proyectoerpjava;
+USE heroku_8ccf36eef5db0d1;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(25),
@@ -14,7 +14,7 @@ CREATE TABLE Producto(
     nombre VARCHAR(25),
     marca VARCHAR(25),
     stock INTEGER,
-    precioCosto DOUBLE,
+    precioCompra DOUBLE,
     precioVenta DOUBLE,
     fechaUltimoIngreso DATE,
     fechaUltimaSalida DATE
@@ -74,7 +74,7 @@ CREATE TABLE Usuario(
 -- SELECT * FROM Proveedor;
 -- SELECT * FROM Cliente;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
-ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
+-- ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 -- DELETE FROM Producto WHERE id = 6;
 ALTER TABLE Cliente MODIFY COLUMN correo VARCHAR(50);
 ALTER TABLE Proveedor MODIFY COLUMN emailContacto VARCHAR(50);
