@@ -11,10 +11,10 @@ import javax.swing.JOptionPane;
 public class Conexion {
     Connection conectar = null;
     
-    String usuario = "root";
-    String password = "123456";
-    String bd = "proyectoerpjava";
-    String ip = "34.135.159.66";
+    String usuario = "b57b03cfe08323";
+    String password = "ed2a00c5";
+    String bd = "heroku_8ccf36eef5db0d1";
+    String ip = "us-cdbr-east-06.cleardb.net";
     String puerto = "3306";
     String cadena = "jdbc:mysql://"+ip+":"+puerto+"/"+bd;
     /*
