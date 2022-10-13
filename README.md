@@ -4,8 +4,17 @@ Proyecto final referente al curso de Programación 2, impartido en la Universida
 Consta de un Sistema ERP desarrollado en Java con la biblioteca gráfica Swing, y utilizando MySQL para la creación y manejo de la Base de Datos.
 
 ## Base de Datos
-Está Hosteada gracias al servicio de Google Cloud Platform, con la IP Publica: `34.135.159.66`
+Está Hosteada gracias al servicio de Heroku mediante ClearDB, con la URL: `mysql://b57b03cfe08323:ed2a00c5@us-cdbr-east-06.cleardb.net/heroku_8ccf36eef5db0d1?reconnect=true`
 ### Las credenciales para conectarse son:
-- Nombre de la DB: `proyectoerpjava`
-- User: `root`
-- Password: `123456`
+- Nombre de la DB: `heroku_8ccf36eef5db0d1`
+- User: `b57b03cfe08323`
+- Password: `ed2a00c5`
+- Host: `us-cdbr-east-06.cleardb.net`
+
+
+## Módulos
+Se creacion los CRUDs para los siguientes:
+- Gestión de Usuarios
+- Inventario
+- Cuentas por Cobrar
+- Cuentas por Pagar
