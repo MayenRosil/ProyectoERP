@@ -6,6 +6,8 @@ import com.programacion2.proyectofinal.Conexiones.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -85,14 +87,20 @@ public class SqlCuentasPagar {
         PreparedStatement ps = null;
         
         try{
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat dateOnly = new SimpleDateFormat("yyyy-MM-dd");
+            
             ps = conexion.estableceConexion().prepareStatement(consulta);
             ps.setString(1, Integer.toString(cuentaPagar.getIdProveedor()));
             ps.setString(2, Integer.toString(cuentaPagar.getIdProducto()));
-            ps.setString(3, null);
+            ps.setString(3, dateOnly.format(cal.getTime()));
             ps.setString(4, Double.toString(cuentaPagar.getTotal()));
             ps.setString(5, Double.toString(cuentaPagar.getPrecioUnitario()));
             ps.setString(6, Integer.toString(cuentaPagar.getCantidadArticulos()));
             ps.execute();
+            
+            Statement st = conexion.estableceConexion().createStatement();
+            ResultSet rs = st.executeQuery("CALL actualizarStockProducto_Compra("+Integer.toString(cuentaPagar.getIdProducto())+", "+Integer.toString(cuentaPagar.getCantidadArticulos())+");");
             return true;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al crear la Factura\nerror: "+e.toString());

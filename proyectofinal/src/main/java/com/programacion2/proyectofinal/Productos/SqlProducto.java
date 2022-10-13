@@ -5,6 +5,8 @@ import com.programacion2.proyectofinal.Conexiones.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -111,13 +113,17 @@ public class SqlProducto {
         PreparedStatement ps = null;
         
         try{
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat dateOnly = new SimpleDateFormat("yyyy-MM-dd");
+            //System.out.println();
+            
             ps = conexion.estableceConexion().prepareStatement(consulta);
             ps.setString(1, producto.getNombre());
             ps.setString(2, producto.getMarca());
             ps.setString(3, Integer.toString(producto.getStock()));
             ps.setString(4, Double.toString(producto.getPrecioCompra()));
             ps.setString(5, Double.toString(producto.getPrecioVenta()));
-            ps.setString(6, null);
+            ps.setString(6, dateOnly.format(cal.getTime()));
             ps.setString(7, null);
             ps.execute();
             return true;

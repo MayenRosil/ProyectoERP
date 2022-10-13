@@ -1,5 +1,5 @@
 -- CREATE DATABASE proyectoerpjava;
-USE proyectoerpjava;
+USE heroku_8ccf36eef5db0d1;
 CREATE TABLE Cliente(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(25),
@@ -14,7 +14,7 @@ CREATE TABLE Producto(
     nombre VARCHAR(25),
     marca VARCHAR(25),
     stock INTEGER,
-    precioCosto DOUBLE,
+    precioCompra DOUBLE,
     precioVenta DOUBLE,
     fechaUltimoIngreso DATE,
     fechaUltimaSalida DATE
@@ -53,6 +53,8 @@ CREATE TABLE Factura_CxP(
     FOREIGN KEY (idProveedor) REFERENCES Proveedor(id),
     FOREIGN KEY (idProducto) REFERENCES Producto(id)
 );
+-- INSERT INTO Factura_CxP(idProveedor, idProducto, fecha, total, precioUnitario, cantidadArticulos) VALUES(2, 1, NOW(), 13.05, 2.5, 3);
+-- SELECT * FROM Factura_CxP;
 CREATE TABLE Usuario(
 	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(40),
@@ -68,10 +70,11 @@ CREATE TABLE Usuario(
 -- INSERT INTO Cliente(nombre, apellido, nit, direccion, correo, telefono) VALUES('Juan', 'Perez', '10730648-4', 'Metronorte zona 18', 'juan.perez@gmail.com', '12345678');
 -- SELECT * FROM Usuario;
 -- SELECT * FROM Producto WHERE nombre = 'Mouse' LIMIT 1;
+-- SELECT * FROM Producto;
 -- SELECT * FROM Proveedor;
 -- SELECT * FROM Cliente;
 -- SELECT * FROM Producto RIGHT JOIN Usuario ON Producto.id = Usuario.id;
-ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
+-- ALTER TABLE Producto RENAME COLUMN precioCosto TO precioCompra;
 -- DELETE FROM Producto WHERE id = 6;
 ALTER TABLE Cliente MODIFY COLUMN correo VARCHAR(50);
 ALTER TABLE Proveedor MODIFY COLUMN emailContacto VARCHAR(50);
@@ -79,3 +82,26 @@ ALTER TABLE Usuario MODIFY COLUMN correo VARCHAR(50);
 ALTER TABLE Factura_CxC DROP COLUMN numero;
 ALTER TABLE Factura_CxP DROP COLUMN numero;
 -- DESC Factura_CxC;
+DELIMITER //
+CREATE PROCEDURE actualizarStockProducto_Venta(
+	IN idProductoPorActualizar INTEGER,
+    IN aumentoStock INTEGER
+)
+BEGIN
+	SELECT @stockActual := stock FROM Producto WHERE id = idProductoPorActualizar;
+	UPDATE Producto SET stock = @stockActual - aumentoStock, fechaUltimaSalida = NOW() WHERE id = idProductoPorActualizar;
+END //
+DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE actualizarStockProducto_Compra(
+	IN idProductoPorActualizar INTEGER,
+    IN aumentoStock INTEGER
+)
+BEGIN
+	SELECT @stockActual := stock FROM Producto WHERE id = idProductoPorActualizar;
+	UPDATE Producto SET stock = @stockActual + aumentoStock, fechaUltimoIngreso = NOW() WHERE id = idProductoPorActualizar;
+END //
+DELIMITER ;
+-- CALL actualizarStockProducto_Venta(1, 2);
+-- DROP PROCEDURE actualizarStockProducto_Venta;
+-- DROP PROCEDURE actualizarStockProducto_Compra;
