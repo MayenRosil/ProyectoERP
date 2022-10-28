@@ -18,3 +18,7 @@ Se creacion los CRUDs para los siguientes:
 - Inventario
 - Cuentas por Cobrar
 - Cuentas por Pagar
+
+## Ejecutar el Programa
+- Instalar JDK de java, este fue desarrollado con la versión JDK15
+- Descargar el archivo .jar adjunto en la raíz del repositorio y ejecutar
